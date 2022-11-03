@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border-style: solid;
+            border-color: black;
+            padding: 20px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id = "lol">
+        <input  type = "number" min='-20' max='100' id="one_2" value = '0' onkeyup="changeRangeValue(this.value)" >
+        <input style="width: 1200px" type="range" id="r1_2" min='-20' max='100' value = '0' oninput="changeInputValue(this.value)">
+    </div>
+    <script src="./what-else.js"></script>
+</body>
+</html>
