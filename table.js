@@ -42,9 +42,8 @@ visApi().onSelectedValuesChangedListener({guid: String(Math.random().toFixed(30)
     
 });
 
+
 //Функция рендера ползунков
-
-
 function render(){
     
     TableRender({
@@ -61,112 +60,257 @@ function render(){
     setColor();
 }
 
-//Функция связи переключателей и ползунков
-function sliderWork(){
-    if (typeof document.getElementById('r1') != 'undefined' && typeof document.getElementById('one') != 'undefined' &&
+
+//Функция связи переключателей и ползунков (возможное место ошибки) 
+//Значение из ползунков и переключателей берется как null.
+// function sliderWork(){
+//     if (typeof document.getElementById('r1') != 'undefined' && typeof document.getElementById('one') != 'undefined' &&
+//         typeof document.getElementById('r2') != 'undefined' && typeof document.getElementById('two') != 'undefined' &&
+//         typeof document.getElementById('r3') != 'undefined' && typeof document.getElementById('three') != 'undefined' &&
+//         typeof document.getElementById('r4') != 'undefined' && typeof document.getElementById('four') != 'undefined'){
+           
+//             let r1 = document.getElementById('r1');
+//             let one = document.getElementById('one');
+           
+            
+//             r1.onchange=function()
+//             {
+                
+//                 document.getElementById('one').value = document.getElementById('r1').value;
+//                 R1_value = Number(document.getElementById('r1').value);
+                
+//                 changeItogo();
+                
+//                 render();
+                
+//             };
+            
+//             one.onchange=function()
+//             {
+//                 document.getElementById('r1').value = document.getElementById('one').value;
+//                 R1_value = Number(document.getElementById('one').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             };
+        
+            
+//             let r2 = document.getElementById('r2');
+//             let two = document.getElementById('two');
+            
+//             r2.onchange=function()
+//             {
+//                 document.getElementById('two').value = document.getElementById('r2').value;
+//                 R2_value = Number(document.getElementById('r2').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             };
+            
+//             two.onchange=function()
+//             {
+//                 document.getElementById('r2').value = document.getElementById('two').value;
+//                 R2_value = Number(document.getElementById('two').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             }
+            
+//             let r3 = document.getElementById('r3');
+//             let three = document.getElementById('three');
+            
+//             r3.onchange=function()
+//             {
+                
+//                 document.getElementById('three').value = document.getElementById('r3').value;
+//                 R3_value = Number(document.getElementById('r3').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             };
+            
+//             three.onchange=function()
+//             {
+//                 document.getElementById('r3').value = document.getElementById('three').value;
+//                 R3_value = Number(document.getElementById('three').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             }
+            
+//             let r4 = document.getElementById('r4');
+//             let four = document.getElementById('four');
+            
+//             r4.onchange=function()
+//             {
+//                 document.getElementById('four').value = document.getElementById('r4').value;
+//                 R4_value = Number(document.getElementById('r4').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             };
+            
+//             four.onchange=function()
+//             {
+//                 document.getElementById('r4').value = document.getElementById('four').value;
+//                 R4_value = Number(document.getElementById('four').value);
+                
+//                 changeItogo();
+                
+//                 render();
+//             }
+            
+//     }
+// }
+
+//Влияние input на range
+function changeRangeValue (val) {
+        if (typeof document.getElementById('r1') != 'undefined' && typeof document.getElementById('one') != 'undefined' &&
         typeof document.getElementById('r2') != 'undefined' && typeof document.getElementById('two') != 'undefined' &&
         typeof document.getElementById('r3') != 'undefined' && typeof document.getElementById('three') != 'undefined' &&
         typeof document.getElementById('r4') != 'undefined' && typeof document.getElementById('four') != 'undefined'){
-           
             let r1 = document.getElementById('r1');
-            let one = document.getElementById('one');
-           
-            
-            r1.onchange=function()
-            {
-                
-                document.getElementById('one').value = document.getElementById('r1').value;
-                R1_value = Number(document.getElementById('r1').value);
-                
-                changeItogo();
-                
-                render();
-                
-            };
-            
-            one.onchange=function()
-            {
-                document.getElementById('r1').value = document.getElementById('one').value;
-                R1_value = Number(document.getElementById('one').value);
-                
-                changeItogo();
-                
-                render();
-            };
-        
-            
+            let one  = document.getElementById('one');
+
             let r2 = document.getElementById('r2');
-            let two = document.getElementById('two');
-            
-            r2.onchange=function()
-            {
-                document.getElementById('two').value = document.getElementById('r2').value;
-                R2_value = Number(document.getElementById('r2').value);
-                
-                changeItogo();
-                
-                render();
-            };
-            
-            two.onchange=function()
-            {
-                document.getElementById('r2').value = document.getElementById('two').value;
-                R2_value = Number(document.getElementById('two').value);
-                
-                changeItogo();
-                
-                render();
-            }
-            
+            let two  = document.getElementById('two');
+
             let r3 = document.getElementById('r3');
-            let three = document.getElementById('three');
-            
-            r3.onchange=function()
-            {
-                
-                document.getElementById('three').value = document.getElementById('r3').value;
-                R3_value = Number(document.getElementById('r3').value);
-                
-                changeItogo();
-                
-                render();
-            };
-            
-            three.onchange=function()
-            {
-                document.getElementById('r3').value = document.getElementById('three').value;
-                R3_value = Number(document.getElementById('three').value);
-                
-                changeItogo();
-                
-                render();
-            }
-            
+            let three  = document.getElementById('three');
+
             let r4 = document.getElementById('r4');
-            let four = document.getElementById('four');
+            let four  = document.getElementById('four');
+
+            val = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+
+            let rangeId;
+            if (rangeId == getElementById('r1')) {
+                if (val >= -20 && val <= 100) {
+                    getElementById('r1').value = val;
+                }
             
-            r4.onchange=function()
-            {
-                document.getElementById('four').value = document.getElementById('r4').value;
-                R4_value = Number(document.getElementById('r4').value);
-                
-                changeItogo();
-                
-                render();
-            };
-            
-            four.onchange=function()
-            {
-                document.getElementById('r4').value = document.getElementById('four').value;
-                R4_value = Number(document.getElementById('four').value);
-                
-                changeItogo();
-                
-                render();
+                else if (val < -20) {
+                val = -20;
+                document.getElementById('one').value = val;
+                document.getElementById('r1').value = val;
             }
+                else if (val > 100) {
+                val = 100
+                document.getElementById('one').value = val;
+                document.getElementById('r1').value = val;
+            }
+            R1_value = val;
+        }
+
+            if (rangeId == getElementById('r2')) {
+                if (val >= -20 && val <= 100) {
+                    getElementById('r2').value = val;
+                }
             
+                else if (val < -20) {
+                val = -20;
+                document.getElementById('two').value = val;
+                document.getElementById('r2').value = val;
+            }
+                else if (val > 100) {
+                val = 100
+                document.getElementById('two').value = val;
+                document.getElementById('r2').value = val;
+            }
+            R2_value = val;
+        }
+
+            if (rangeId == getElementById('r3')) {
+                if (val >= -20 && val <= 100) {
+                    getElementById('r3').value = val;
+                }
+            
+                else if (val < -20) {
+                val = -20;
+                document.getElementById('three').value = val;
+                document.getElementById('r3').value = val;
+            }
+                else if (val > 100) {
+                val = 100
+                document.getElementById('three').value = val;
+                document.getElementById('r3').value = val;
+            }
+            R3_value = val;
+        }
+
+            if (rangeId == getElementById('r4')) {
+                if (val >= -20 && val <= 100) {
+                    getElementById('r4').value = val;
+                }
+            
+                else if (val < -20) {
+                val = -20;
+                document.getElementById('four').value = val;
+                document.getElementById('r4').value = val;
+            }
+                else if (val > 100) {
+                val = 100
+                document.getElementById('four').value = val;
+                document.getElementById('r4').value = val;
+            }
+            R4_value = val;
+        }
+        changeItogo();
+        render();
     }
 }
+
+//Влияние range на input
+function changeInputValue(val) {
+    if (typeof document.getElementById('r1') != 'undefined' && typeof document.getElementById('one') != 'undefined' &&
+    typeof document.getElementById('r2') != 'undefined' && typeof document.getElementById('two') != 'undefined' &&
+    typeof document.getElementById('r3') != 'undefined' && typeof document.getElementById('three') != 'undefined' &&
+    typeof document.getElementById('r4') != 'undefined' && typeof document.getElementById('four') != 'undefined'){
+        let r1 = document.getElementById('r1');
+        let one  = document.getElementById('one');
+
+        let r2 = document.getElementById('r2');
+        let two  = document.getElementById('two');
+
+        let r3 = document.getElementById('r3');
+        let three  = document.getElementById('three');
+
+        let r4 = document.getElementById('r4');
+        let four  = document.getElementById('four');
+
+        val = val > 100 ? val = 100 : val;
+
+        let inputId;
+        if (inputId == getElementById('one')) {
+            document.getElementById("one").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+            R1_value = val;
+        }
+
+        if (inputId == getElementById('two')) {
+            document.getElementById("two").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+            R2_value = val;
+        }
+
+        if (inputId == getElementById('three')) {
+            document.getElementById("three").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+            R3_value = val;
+        }
+
+        if (inputId == getElementById('four')) {
+            document.getElementById("four").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+            R4_value = val;
+        }
+    }
+    changeItogo();
+    render();
+}
+
 
 function waitForLoad(widgetGuid, iter){
     visApi().onWidgetLoadedListener({guid:String(Math.random().toFixed(30)), widgetGuid:widgetGuid}, function(){
@@ -185,7 +329,7 @@ function setColor(){
     
 }
    
-//Возможная функция с ошибкой
+
 function changeItogo(){
     
     let itogo = [];
